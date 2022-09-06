@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+        <link rel="shortcut icon" href="/images/favicon.ico">
+    
+    
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    
+    
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    
+    
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    
+    
+        <link rel="mask-icon" href="/images/safari-pinned-tab.svg">
+    
+
+
+    <!-- meta -->
+
+
+<title>前端学习 | 杨星博客</title>
+
+
+    <meta name="keywords" content="计算机基础, 博客,blog,java,计算机">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="不学前端怎么改自己的blog :sunglasses:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端学习">
+<meta property="og:url" content="https://yangstar23.github.io/FrontEnd/index.html">
+<meta property="og:site_name" content="杨星博客">
+<meta property="og:description" content="不学前端怎么改自己的blog :sunglasses:">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yangstar23.github.io/FrontEnd/image-20210820112957117.png">
+<meta property="og:image" content="https://yangstar23.github.io/FrontEnd/image-20210820113452267.png">
+<meta property="og:image" content="https://yangstar23.github.io/FrontEnd/image-20210820113534604.png">
+<meta property="og:image" content="https://yangstar23.github.io/FrontEnd/image-20210820113559748.png">
+<meta property="og:image" content="https://yangstar23.github.io/FrontEnd/image-20210820195713655.png">
+<meta property="og:image" content="https://yangstar23.github.io/FrontEnd/image-20210820201018589.png">
+<meta property="og:image" content="https://yangstar23.github.io/FrontEnd/image-20210820201106826.png">
+<meta property="og:image" content="https://yangstar23.github.io/FrontEnd/image-20210820202623385.png">
+<meta property="og:image" content="https://yangstar23.github.io/FrontEnd/image-20210821111304918.png">
+<meta property="og:image" content="https://yangstar23.github.io/FrontEnd/image-20210826171318204.png">
+<meta property="og:image" content="https://yangstar23.github.io/FrontEnd/F.png">
+<meta property="og:image" content="https://yangstar23.github.io/FrontEnd/images/F.png">
+<meta property="og:image" content="https://yangstar23.github.io/images/d.png">
+<meta property="og:image" content="https://yangstar23.github.io/FrontEnd/image-20210922125603023.png">
+<meta property="og:image" content="https://yangstar23.github.io/FrontEnd/image-20210922125742466.png">
+<meta property="article:published_time" content="2021-08-19T11:07:32.000Z">
+<meta property="article:modified_time" content="2022-06-06T07:17:24.000Z">
+<meta property="article:author" content="yagnstar">
+<meta property="article:tag" content="计算机基础">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yangstar23.github.io/FrontEnd/image-20210820112957117.png">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="this.media='all'">
+        
+    
+
+    
+    
+
+    
+
+     
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ 
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">Ystar</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">全部文章</a>
+                
+                    <a href="/friends/" class="navbar-menu button">友链</a>
+                
+                    <a href="/artitalk/" class="navbar-menu button">说说</a>
+                
+                    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="navbar-menu button">读书笔记</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">全部文章</a>
+                
+                    <a href="/friends/" class="dropdown-menu button">友链</a>
+                
+                    <a href="/artitalk/" class="dropdown-menu button">说说</a>
+                
+                    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="dropdown-menu button">读书笔记</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        前端学习
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2021/08/" class="post-meta__date button">2021-08-19</a>
+        
+    <span class="separate-dot"></span><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="button">计算机</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header">
+    <div class="post__expire" id="post-expired-notify">
+        <p>
+            本文最后更新于 &lt;span id=&#34;expire-date&#34;&gt;&lt;/span&gt; 天前，文中部分描述可能已经过时。
+        </p>
+    </div>
+    <script>
+        (() => {
+            var update = Date.parse("2022-06-06"),
+                date = new Date(),
+                now = date.getTime(),
+                expire = now - update,
+                expire_days = Math.floor(expire/(24*3600*1000));
+            if (expire_days >= 50) {
+                document.querySelectorAll('#expire-date')[0].innerHTML = expire_days;
+                document.querySelectorAll('#post-expired-notify')[0].style.display = 'block';
+            }
+        })();
+    </script>
+</div>
+    <div class="post__content">
+        <hr>
+<p><strong>不学前端怎么改自己的blog :sunglasses:</strong> </p>
+<span id="more"></span>
+
+<h2 id="第一天"><a href="#第一天" class="headerlink" title="第一天"></a>第一天</h2><blockquote>
+<p>时间：2021年8月20日11:26:06​</p>
+</blockquote>
+<h3 id="vscode安装："><a href="#vscode安装：" class="headerlink" title="vscode安装："></a>vscode安装：</h3><hr>
+<ul>
+<li>vscode下载地址：<a target="_blank" rel="noopener" href="https://code.visualstudio.com/">https://code.visualstudio.com/</a></li>
+</ul>
+<p><img src="/FrontEnd/image-20210820112957117.png" alt="image-20210820112957117"></p>
+<ul>
+<li><p>vscode插件推荐</p>
+<ul>
+<li><p>Chinese：实现简体中文</p>
+<p><img src="/FrontEnd/image-20210820113452267.png" alt="image-20210820113452267"></p>
+</li>
+<li><p>open in browser：实现右击可以在浏览器预览</p>
+</li>
+</ul>
+<p><img src="/FrontEnd/image-20210820113534604.png" alt="image-20210820113534604"></p>
+<img src="/FrontEnd/image-20210820113559748.png" alt="image-20210820113559748" style="zoom:67%;"></li>
+</ul>
+<h3 id="几个小细节"><a href="#几个小细节" class="headerlink" title="几个小细节"></a>几个小细节</h3><hr>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span> </span><br><span class="line">	文档类型声明标签，告诉浏览器这个页面才去HTML5版本来显示页面</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;zh-CN&quot;</span>&gt;</span></span><br><span class="line">    告诉浏览器或者搜索引擎，这个是一个中文网站，本站采用中文来显示</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span>  </span><br><span class="line">    必须写，UTF-8来保存文字，如果不写就会乱码</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="HTML常用标签"><a href="#HTML常用标签" class="headerlink" title="HTML常用标签"></a>HTML常用标签</h3><hr>
+<h4 id="标题标签"><a href="#标题标签" class="headerlink" title="标题标签"></a>标题标签</h4><p>HTML提供了6个等级的网页标题</p>
+<p><img src="/FrontEnd/image-20210820195713655.png" alt="image-20210820195713655"></p>
+<p>h是单词head的缩写</p>
+<p><strong>特点</strong></p>
+<p>1、变粗变大</p>
+<p>2、独占一行</p>
+<p><strong>标签语义</strong></p>
+<p>作为标题使用，并且根据重要性递减</p>
+<h4 id="段落标签"><a href="#段落标签" class="headerlink" title="段落标签"></a>段落标签</h4><p><img src="/FrontEnd/image-20210820201018589.png" alt="image-20210820201018589"></p>
+<p> p是paragraph的缩写</p>
+<p>两个段落之间有空格</p>
+<h4 id="换行标签"><a href="#换行标签" class="headerlink" title="换行标签"></a>换行标签</h4><p><img src="/FrontEnd/image-20210820201106826.png" alt="image-20210820201106826"></p>
+<p>br是break的缩写</p>
+<p>是个单标签</p>
+<p>只是简单换一个行，两个段落之间不空格</p>
+<h4 id="文本格式化标签"><a href="#文本格式化标签" class="headerlink" title="文本格式化标签"></a>文本格式化标签</h4><h5 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a>粗体</h5><p><strong></strong>（语义更加强烈）</p>
+<p> <b></b></p>
+<h5 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a>斜体</h5><p> <i></i>（语义更加强烈）</p>
+<p> <em></em></p>
+<h5 id="下划线"><a href="#下划线" class="headerlink" title="下划线"></a>下划线</h5><p><ins></ins>（语义更加强烈）</p>
+<p>  <u></u></p>
+<h5 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a>删除线</h5><p><s></s></p>
+<h4 id="div和span标签"><a href="#div和span标签" class="headerlink" title="div和span标签"></a>div和span标签</h4><p><img src="/FrontEnd/image-20210820202623385.png" alt="image-20210820202623385"></p>
+<p>没有语义，当做一个盒子，可以放东西</p>
+<p> div是division的缩写，表示分割</p>
+<p>span以为跨度，跨距</p>
+<h5 id="div"><a href="#div" class="headerlink" title="div"></a>div</h5><p>自己独占一行</p>
+<h5 id="span"><a href="#span" class="headerlink" title="span"></a>span</h5><p>一行上可以放很多个</p>
+<h2 id="第二天"><a href="#第二天" class="headerlink" title="第二天"></a>第二天</h2><blockquote>
+<p>时间：2021年8月26日17:28:05</p>
+</blockquote>
+<h4 id="图像标签"><a href="#图像标签" class="headerlink" title="图像标签"></a>图像标签</h4><p><img src="/FrontEnd/image-20210821111304918.png" alt="image-20210821111304918"></p>
+<p>img是image的缩写，意思是图像</p>
+<p>src是<img>标签的必须属性，用于指定图像文件的路径和文件名</p>
+<p>图像标签的其他属性：</p>
+<p><img src="/FrontEnd/image-20210826171318204.png" alt="image-20210826171318204"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;F.png&quot;</span> <span class="attr">alt</span>=<span class="string">&quot;网站logo&quot;</span> <span class="attr">title</span>=<span class="string">&quot;logo&quot;</span> <span class="attr">height</span>=<span class="string">&quot;200&quot;</span> <span class="attr">width</span>=<span class="string">&quot;200&quot;</span> <span class="attr">border</span>=<span class="string">&quot;15&quot;</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>注意点：</p>
+<ol>
+<li>图像标签可以有多个属性，必须写在标签名后面</li>
+<li>属性之间不分先后顺序</li>
+<li>采取键值对的格式</li>
+</ol>
+<h4 id="路径"><a href="#路径" class="headerlink" title="路径"></a>路径</h4><ol>
+<li>目录文件夹：就是一个普通文件夹，只是存放了制作页面需要的相关素材，比如HTML文件，图片等</li>
+<li>根目录：打开目录文件夹的第一层就是根目录</li>
+</ol>
+<h5 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h5><ol>
+<li>相对路径：图片相对于HTML页面的位置</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left">相对路径分类</th>
+<th>符号</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">同一级路径</td>
+<td></td>
+<td>图像文件位于HTML文件的同一级 <img src="/FrontEnd/F.png"></td>
+</tr>
+<tr>
+<td align="left">下一级路径</td>
+<td>/</td>
+<td>图像文件位于HTML文件的下一级<img src="images/F.png"></td>
+</tr>
+<tr>
+<td align="left">上一级路径</td>
+<td>../</td>
+<td>图像文件位于HTML文件的上一级<img src="../images/d.png"></td>
+</tr>
+</tbody></table>
+<ol start="2">
+<li><p>绝对路径：</p>
+<p>C:\Users\yjx\Desktop\前端\try\day1\F.png</p>
+<p><a target="_blank" rel="noopener" href="https://f000.top/typora/image-20210820122841766.png">https://f000.top/typora/image-20210820122841766.png</a></p>
+</li>
+</ol>
+<h4 id="超链接标签"><a href="#超链接标签" class="headerlink" title="超链接标签"></a>超链接标签</h4><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;跳转目标&quot;</span> <span class="attr">target</span>=<span class="string">&quot;目标窗口弹出方式&quot;</span>&gt;</span>文本或者图像<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>a是单词anchor的缩写，意思是锚</p>
+<h5 id="两个属性"><a href="#两个属性" class="headerlink" title="两个属性"></a>两个属性</h5><p>href</p>
+<hr>
+<p>用于指定连接目标的url地址</p>
+<p>target</p>
+<hr>
+<p>用于指定链接页面的打开方式</p>
+<ul>
+<li>_self为默认值</li>
+<li>_blank为在新窗口中打开方式</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://qq.com&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span>腾讯qq<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="链接分类"><a href="#链接分类" class="headerlink" title="链接分类"></a>链接分类</h5><ul>
+<li>外部链接</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://qq.com&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span>&gt;</span>腾讯qq<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>内部链接</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;创建页面.html&quot;</span>&gt;</span>内部页面<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>空链接</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#&quot;</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>下载链接：地址链接的是 .exe .zip 形式</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;F.zip&quot;</span>&gt;</span>下载文件<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>网页元素链接</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;http://f000.top&quot;</span> <span class="attr">target</span>=<span class="string">&quot;_blank&quot;</span> <span class="attr">title</span>=<span class="string">&quot;建兴博客&quot;</span>&gt;</span><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;F.png&quot;</span> <span class="attr">height</span>=<span class="string">&quot;200&quot;</span> &gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h2 id="第三天"><a href="#第三天" class="headerlink" title="第三天"></a>第三天</h2><blockquote>
+<p>时间：2021年9月22日12:52:49</p>
+</blockquote>
+<hr>
+
+
+
+<h3 id="列表和表格"><a href="#列表和表格" class="headerlink" title="列表和表格"></a>列表和表格</h3><hr>
+<h4 id="无序列表-ul-（重点）"><a href="#无序列表-ul-（重点）" class="headerlink" title="无序列表 ul （重点）"></a>无序列表 ul （重点）</h4><p>无序列表的各个列表项之间没有顺序级别之分，是并列的。其基本语法格式如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>列表项1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>列表项2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>列表项3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  ......</span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>奥尼尔大学槽点<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">        每晚上指纹打卡   </span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">        全大学城解封的情况下，依旧封校</span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span>&gt;</span></span><br><span class="line">         食堂过少，全校两万多人居然只有两个食堂   </span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>效果：</p>
+<p><img src="/FrontEnd/image-20210922125603023.png" alt="image-20210922125603023"></p>
+<h4 id="有序列表-ol-（了解）"><a href="#有序列表-ol-（了解）" class="headerlink" title="有序列表 ol （了解）"></a>有序列表 ol （了解）</h4><p>有序列表即为有排列顺序的列表，其各个列表项按照一定的顺序排列定义，有序列表的基本语法格式如下：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>列表项1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>列表项2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>列表项3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  ......</span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>  所有特性基本与ul 一致。  但是实际中比 无序列表 用的少很多。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;ol&gt;</span><br><span class="line">&lt;li&gt;吃饭&lt;/li&gt;</span><br><span class="line">&lt;li&gt;睡觉&lt;/li&gt;</span><br><span class="line">&lt;/ol&gt;</span><br></pre></td></tr></table></figure>
+
+<p>效果：</p>
+<p><img src="/FrontEnd/image-20210922125742466.png" alt="image-20210922125742466"></p>
+
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2022-06-06</p></div> 
+    <div class="post-entry__tags"><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="post-tags__link button"># 计算机基础</a></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/typora/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            typora使用技巧
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            GIT学习笔记
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+    <div class="post__comments content-card" id="comment">
+        
+    <h4>评论</h4>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="tcomment" class="twikoo_thread"></div>
+
+
+
+    </div>
+
+
+
+</main>
+
+            <footer class="footer">
+     
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+    
+
+
+    
+    
+    
+        <span id="busuanzi_container_site_uv" hidden>
+            <span></span>
+            <span id="busuanzi_value_site_uv"></span>
+            <span>Viewers</span>
+            
+                <span>|</span>
+            
+        </span>
+    
+    
+        <span id="busuanzi_container_site_pv" hidden>
+            <span></span>
+            <span id="busuanzi_value_site_pv"></span>
+            <span>Views</span>
+            
+        </span>
+    
+ 
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2021&nbsp;-&nbsp;2022 <a href="/">杨星博客</a>
+        </p>
+    
+    
+<!--    <p>Powered by <a href="https://f000.top" target="_blank">BuildNew</a>-->
+    <p>滇ICP备2021005610号</p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+    
+ 
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        let lazyloadT = Boolean('false'),
+            auto_fancybox = Boolean('false')
+        if (auto_fancybox) {
+            $(".post__content").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        } else {
+            $(".post__content").find("fancybox").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        }
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    <script>
+        function loadComment() {
+            let e;
+            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/twikoo@0.3.2/dist/twikoo.all.min.js',
+            document.body.appendChild(e);
+            e.onload = () => {
+                twikoo.init({
+                    envId: 'twikoo-0gv0i4p12778a6e6',
+                    el: '#tcomment'
+                });
+            };
+        }
+    
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+    
+        setTimeout(function () {
+            if (!isBot && supportsIntersectionObserver) {
+                var comment_observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        loadComment();
+                        comment_observer.disconnect();
+                    }
+                }, { threshold: [0] });
+                comment_observer.observe(document.getElementById('comment'));
+            } else {
+                loadComment();
+            }
+        }, 1);
+    </script>
+
+
+
+
+    </body>
+</html>

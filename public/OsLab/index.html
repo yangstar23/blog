@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+        <link rel="shortcut icon" href="/images/favicon.ico">
+    
+    
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    
+    
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    
+    
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    
+    
+        <link rel="mask-icon" href="/images/safari-pinned-tab.svg">
+    
+
+
+    <!-- meta -->
+
+
+<title>OsLab | 杨星博客</title>
+
+
+    <meta name="keywords" content="计算机基础, 博客,blog,java,计算机">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="Lab1理论部分操作系统的启动 为什么用汇编语言，不用C语言？——可以严格控制要执行什么 1、打开电源计算机执行的第一个指令是什么？实模式和保护模式对应，；两种模式的寻址方式不一样，cs左移4位+IP  2、引导扇区 0x7c00处，就是从磁盘引导扇区读入的512字节 bootsect.s（翻译就是引导扇区） .s是什么文件？ ——汇编代码 1234567mov ax, #BOOTSEG &#x2F;&#x2F;也就">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OsLab">
+<meta property="og:url" content="https://yangstar23.github.io/OsLab/index.html">
+<meta property="og:site_name" content="杨星博客">
+<meta property="og:description" content="Lab1理论部分操作系统的启动 为什么用汇编语言，不用C语言？——可以严格控制要执行什么 1、打开电源计算机执行的第一个指令是什么？实模式和保护模式对应，；两种模式的寻址方式不一样，cs左移4位+IP  2、引导扇区 0x7c00处，就是从磁盘引导扇区读入的512字节 bootsect.s（翻译就是引导扇区） .s是什么文件？ ——汇编代码 1234567mov ax, #BOOTSEG &#x2F;&#x2F;也就">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yangstar23.github.io/OsLab/image-20220425200544223.png">
+<meta property="og:image" content="https://yangstar23.github.io/OsLab/image-20220426071923478.png">
+<meta property="og:image" content="https://yangstar23.github.io/OsLab/image-20220426072032249.png">
+<meta property="og:image" content="https://yangstar23.github.io/OsLab/image-20220426072137909.png">
+<meta property="og:image" content="https://yangstar23.github.io/OsLab/image-20220426072252261.png">
+<meta property="og:image" content="https://yangstar23.github.io/OsLab/image-20220426072439564.png">
+<meta property="og:image" content="https://yangstar23.github.io/OsLab/image-20220426072648341.png">
+<meta property="og:image" content="https://yangstar23.github.io/OsLab/userid19614labid568time1423993300541.png">
+<meta property="article:published_time" content="2022-04-25T11:08:37.000Z">
+<meta property="article:modified_time" content="2022-06-06T07:19:22.000Z">
+<meta property="article:author" content="yagnstar">
+<meta property="article:tag" content="计算机基础">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yangstar23.github.io/OsLab/image-20220425200544223.png">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="this.media='all'">
+        
+    
+
+    
+    
+
+    
+
+     
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ 
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">Ystar</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">全部文章</a>
+                
+                    <a href="/friends/" class="navbar-menu button">友链</a>
+                
+                    <a href="/artitalk/" class="navbar-menu button">说说</a>
+                
+                    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="navbar-menu button">读书笔记</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">全部文章</a>
+                
+                    <a href="/friends/" class="dropdown-menu button">友链</a>
+                
+                    <a href="/artitalk/" class="dropdown-menu button">说说</a>
+                
+                    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="dropdown-menu button">读书笔记</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        OsLab
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2022/04/" class="post-meta__date button">2022-04-25</a>
+        
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header">
+    <div class="post__expire" id="post-expired-notify">
+        <p>
+            本文最后更新于 &lt;span id=&#34;expire-date&#34;&gt;&lt;/span&gt; 天前，文中部分描述可能已经过时。
+        </p>
+    </div>
+    <script>
+        (() => {
+            var update = Date.parse("2022-06-06"),
+                date = new Date(),
+                now = date.getTime(),
+                expire = now - update,
+                expire_days = Math.floor(expire/(24*3600*1000));
+            if (expire_days >= 50) {
+                document.querySelectorAll('#expire-date')[0].innerHTML = expire_days;
+                document.querySelectorAll('#post-expired-notify')[0].style.display = 'block';
+            }
+        })();
+    </script>
+</div>
+    <div class="post__content">
+        <h1 id="Lab1"><a href="#Lab1" class="headerlink" title="Lab1"></a>Lab1</h1><h3 id="理论部分"><a href="#理论部分" class="headerlink" title="理论部分"></a>理论部分</h3><p>操作系统的启动</p>
+<p>为什么用汇编语言，不用C语言？——可以严格控制要执行什么</p>
+<h4 id="1、打开电源计算机执行的第一个指令是什么？"><a href="#1、打开电源计算机执行的第一个指令是什么？" class="headerlink" title="1、打开电源计算机执行的第一个指令是什么？"></a>1、打开电源计算机执行的第一个指令是什么？</h4><p>实模式和保护模式对应，；两种模式的寻址方式不一样，cs左移4位+IP</p>
+<p><img src="/OsLab/image-20220425200544223.png" alt="image-20220425200544223"></p>
+<h4 id="2、引导扇区"><a href="#2、引导扇区" class="headerlink" title="2、引导扇区"></a>2、引导扇区</h4><p> 0x7c00处，就是从磁盘引导扇区读入的512字节</p>
+<p>bootsect.s（翻译就是引导扇区）</p>
+<p>.s是什么文件？ ——汇编代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">mov ax, #BOOTSEG //也就是ax=0x07c0v</span><br><span class="line">mov ds, ax</span><br><span class="line">mov ax, #INITSEG</span><br><span class="line">MOV ES ,AX</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">BOOTSEG=0X07C0</span><br></pre></td></tr></table></figure>
+
+<h2 id="操作系统的启动"><a href="#操作系统的启动" class="headerlink" title="操作系统的启动"></a>操作系统的启动</h2><p>计算机的工作：取指令——执行指令</p>
+<p>通电后第一步干的就是：把操作系统从磁盘，拿到内存里面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//setup.s</span><br><span class="line">MOV AH ,#0X88 int 0x15 mov [2],ax... //获取内存的大小</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h1 id="实验部分"><a href="#实验部分" class="headerlink" title="实验部分"></a>实验部分</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">怎么解压</span><br><span class="line">tar -zxvf </span><br></pre></td></tr></table></figure>
+
+<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><ol>
+<li><p>x86模拟器bochs</p>
+<p>Bochs 是一个免费且开放源代码的 IA-32（x86）架构 PC 机模拟器。在它模拟出的环境中可以运行 Linux、DOS 和各种版本的 Windows 等多种操作系统。Bochs 的是模拟器，其原理决定了它的运行效率会低于虚拟机。</p>
+<p><a target="_blank" rel="noopener" href="https://bochs.sourceforge.io/">bochs主页是</a></p>
+</li>
+<li><p>GCC编译器</p>
+<p>GCC 是和 Linux 一起成长起来的编译器。Linux 最初的版本就是由 GCC 编译的。现在 GCC 也是在自由软件领域应用最广泛的编译器。</p>
+</li>
+<li><p>GDB 调试器</p>
+<p>是 GCC 编译器的兄弟。做为自由软件领域几乎是唯一的调试器，它秉承了 Unix 类操作系统的一贯风格，采用纯命令行操作，有点儿类似 dos 下的 debug。</p>
+</li>
+<li><p>Ubuntu </p>
+<p>也许不是目前最好用的 Linux 桌面发行版，但它一定是最流行的。主要特点是易用，非常的易用。现在，已经有越来越多的人开始用 Ubuntu 完全代替 Windows，享受更加自由、安全、守法的感觉。</p>
+</li>
+</ol>
+<h2 id="实验环境熟悉"><a href="#实验环境熟悉" class="headerlink" title="实验环境熟悉"></a>实验环境熟悉</h2><p>1、解压</p>
+<p><img src="/OsLab/image-20220426071923478.png" alt="image-20220426071923478"></p>
+<p>2、run脚本</p>
+<p><img src="/OsLab/image-20220426072032249.png" alt="image-20220426072032249">run 是运行 bochs 的脚本命令。</p>
+<p>运行后 bochs 会自动在它的虚拟软驱 A 和虚拟硬盘上各挂载一个镜像文件，软驱上挂载是 linux-0.11/Image，硬盘上挂载的是 hdc-0.11.img。</p>
+<p>因为 bochs 配置文件中的设置是从软驱 A 启动，所以 Linux 0.11 会被自动加载。</p>
+<p>而 Linux 0.11 会驱动硬盘，并 mount 硬盘上的文件系统，也就是将 hdc-0.11.img 内镜像的文件系统挂载到 0.11 系统内的根目录 —— <code>/</code>。在 0.11 下访问文件系统，访问的就是 hdc-0.11.img 文件内虚拟的文件系统。</p>
+<p>3、bochs 目录</p>
+<p><img src="/OsLab/image-20220426072137909.png" alt="image-20220426072137909"></p>
+<p>bochs 目录下是与 bochs 相关的执行文件、数据文件和配置文件。</p>
+<p>4、hdc-0.11.img 文件</p>
+<p>hdc-0.11.img 文件的格式是 Minix 文件系统的镜像。</p>
+<p>Linux 所有版本都支持这种格式的文件系统，所以可以直接在宿主 Linux 上通过 mount 命令访问此文件内的文件，达到宿主系统和 bochs 内运行的 Linux 0.11 之间交换文件的效果。</p>
+<p>Windows 下目前没有（或者是还没发现）直接访问 Minix 文件系统的办法，所以要借助于 fdb.img，这是一个 1.44M 软盘的镜像文件，内部是 FAT12 文件系统。将它挂载到 bochs 的软驱 B，就可以在 0.11 中访问它。而通过 filedisk 或者 WinImage，可以在 Windows 下访问它内部的文件。</p>
+<p>hdc-0.11.img 内包含有：</p>
+<ul>
+<li>Bash shell；</li>
+<li>一些基本的 Linux 命令、工具，比如 cp、rm、mv、tar；</li>
+<li>vi 编辑器；</li>
+<li>gcc 1.4 编译器，可用来编译标准 C 程序；</li>
+<li>as86 和 ld86；</li>
+<li>Linux 0.11 的源代码，可在 0.11 下编译，然后覆盖现有的二进制内核。</li>
+</ul>
+<p><img src="/OsLab/image-20220426072252261.png" alt="image-20220426072252261"></p>
+<p>5、编译内核</p>
+<p>进入linux-0.11目录，然后执行make</p>
+<p><img src="/OsLab/image-20220426072439564.png" alt="image-20220426072439564"></p>
+<p>产生Image 文件</p>
+<p>oslab 工作在一个宿主操作系统之上，我们使用的 Linux，在宿主操作系统之上完成对 Linux 0.11 的开发、修改和编译之后，在 linux-0.11 目录下会生产一个名为 <strong>Image</strong> 的文件，它就是编译之后的目标文件。</p>
+<p>该文件内已经包含引导和所有内核的二进制代码。如果拿来一张软盘，从它的 0 扇区开始，逐字节写入 Image 文件的内容，就可以用这张软盘启动一台真正的计算机，并进入 Linux 0.11 内核。</p>
+<blockquote>
+<p>oslab 采用 bochs 模拟器加载这个 Image 文件，模拟执行 Linux 0.11，这样省却了重新启动计算机的麻烦。</p>
+</blockquote>
+<p>6、运行</p>
+<p>oslab下运行 run脚本</p>
+<p><img src="/OsLab/image-20220426072648341.png" alt="image-20220426072648341"></p>
+<p>此时bochs运行Linux-0.11成功！hello linux-0.11!</p>
+<p>7、文件交换</p>
+<p>接下来讲解一下 Ubuntu 和 Linux 0.11 之间的文件交换如何启动。</p>
+<blockquote>
+<p>开始设置文件交换之前，务必关闭所有的 Bochs 进程。</p>
+</blockquote>
+<p>oslab 下的 <code>hdc-0.11-new.img</code> 是 0.11 内核启动后的根文件系统镜像文件，相当于在 bochs 虚拟机里装载的硬盘。在 Ubuntu 上访问其内容的方法是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/oslab/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启动挂载脚本</span></span><br><span class="line">$ sudo ./mount-hdc</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>大家使用 sudo 时，password 是 <code>shiyanlou</code>，也有可能不会提示输入密码。</p>
+</blockquote>
+<p>之后，hdc 目录下就是和 0.11 内核一模一样的文件系统了，可以读写任何文件（可能有些文件要用 sudo 才能访问）。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 进入挂载到 Ubuntu 上的目录</span></span><br><span class="line">$ <span class="built_in">cd</span> ~/oslab/hdc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看内容</span></span><br><span class="line">$ <span class="built_in">ls</span> -al</span><br></pre></td></tr></table></figure>
+
+<p>读写完毕，不要忘了卸载这个文件系统：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> ~/oslab/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 卸载</span></span><br><span class="line">$ sudo umount hdc</span><br></pre></td></tr></table></figure>
+
+<p>经过 <code>sudo ./mount-hdc</code> 这样处理以后，我们可以在 Ubuntu 的 hdc 目录下创建一个 xxx.c 文件，然后利用 Ubuntu 上的编辑工具（如 gedit 等）实现对 xxx.c 文件的编辑工作，在编辑保存以后。</p>
+<p>执行 <code>sudo umount hdc</code> 后，再进入 Linux 0.11（即 run 启动 bochs 以后）就会看到这个 xxx.c（即如下图所示），这样就避免了在 Linux 0.11 上进行编辑 xxx.c 的麻烦，因为 Linux 0.11 作为一个很小的操作系统，其上的编辑工具只有 vi，使用起来非常不便。</p>
+<p><img src="/OsLab/userid19614labid568time1423993300541.png" alt="图片描述信息"></p>
+<p>图 2 用 Ubuntu 和 Linux 0.11 完成文件交换以后再启动 Linux 0.11 以后</p>
+<p>另外在 Linux 0.11 上产生的文件，如后面实验中产生的 <code>process.log</code> 文件，可以按这种方式 “拿到” Ubuntu 下用 python 程序进行处理，当然这个 python 程序在 Linux 0.11 上显然是不好使的，因为 Linux 0.11 上搭建不了 python 解释环境。</p>
+<blockquote>
+<p>注意 1：不要在 0.11 内核运行的时候 mount 镜像文件，否则可能会损坏文件系统。同理，也不要在已经 mount 的时候运行 0.11 内核。</p>
+<p>注意 2：在关闭 Bochs 之前，需要先在 0.11 的命令行运行 “sync”，确保所有缓存数据都存盘后，再关闭 Bochs。</p>
+</blockquote>
+
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2022-06-06</p></div> 
+    <div class="post-entry__tags"><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="post-tags__link button"># 计算机基础</a></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/ElectronicNote/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            ElectronicNote
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/music/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            乐理知识
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+    <div class="post__comments content-card" id="comment">
+        
+    <h4>评论</h4>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="tcomment" class="twikoo_thread"></div>
+
+
+
+    </div>
+
+
+
+</main>
+
+            <footer class="footer">
+     
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+    
+
+
+    
+    
+    
+        <span id="busuanzi_container_site_uv" hidden>
+            <span></span>
+            <span id="busuanzi_value_site_uv"></span>
+            <span>Viewers</span>
+            
+                <span>|</span>
+            
+        </span>
+    
+    
+        <span id="busuanzi_container_site_pv" hidden>
+            <span></span>
+            <span id="busuanzi_value_site_pv"></span>
+            <span>Views</span>
+            
+        </span>
+    
+ 
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2021&nbsp;-&nbsp;2022 <a href="/">杨星博客</a>
+        </p>
+    
+    
+<!--    <p>Powered by <a href="https://f000.top" target="_blank">BuildNew</a>-->
+    <p>滇ICP备2021005610号</p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+    
+ 
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        let lazyloadT = Boolean('false'),
+            auto_fancybox = Boolean('false')
+        if (auto_fancybox) {
+            $(".post__content").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        } else {
+            $(".post__content").find("fancybox").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        }
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    <script>
+        function loadComment() {
+            let e;
+            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/twikoo@0.3.2/dist/twikoo.all.min.js',
+            document.body.appendChild(e);
+            e.onload = () => {
+                twikoo.init({
+                    envId: 'twikoo-0gv0i4p12778a6e6',
+                    el: '#tcomment'
+                });
+            };
+        }
+    
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+    
+        setTimeout(function () {
+            if (!isBot && supportsIntersectionObserver) {
+                var comment_observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        loadComment();
+                        comment_observer.disconnect();
+                    }
+                }, { threshold: [0] });
+                comment_observer.observe(document.getElementById('comment'));
+            } else {
+                loadComment();
+            }
+        }, 1);
+    </script>
+
+
+
+
+    </body>
+</html>

@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+        <link rel="shortcut icon" href="/images/favicon.ico">
+    
+    
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    
+    
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    
+    
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    
+    
+        <link rel="mask-icon" href="/images/safari-pinned-tab.svg">
+    
+
+
+    <!-- meta -->
+
+
+<title>2022年4.4-4.10（第6周）总结 | 杨星博客</title>
+
+
+    <meta name="keywords" content="博客,blog,java,计算机">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="前言这是一次全新的尝试，由于现阶段科目繁多，笔记、心得、思考写的太过于分散，书上有、ipad上有、电脑上也有，不利于回顾复习，所以我决定在电脑上弄一个文档，专门记录这两周的所有笔记。 另外也算是一个日记吧，记录一下自己现阶段的一些思考和观点，日后也是一个难忘的回忆。 另外这样记录的缺点就是很杂乱，各种各样的东西都在上面，所以最好是每个月有一个总结，一部分优秀的内容，可以重新开一篇文章写，更具备系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2022年4.4-4.10（第6周）总结">
+<meta property="og:url" content="https://yangstar23.github.io/2022-4-4/index.html">
+<meta property="og:site_name" content="杨星博客">
+<meta property="og:description" content="前言这是一次全新的尝试，由于现阶段科目繁多，笔记、心得、思考写的太过于分散，书上有、ipad上有、电脑上也有，不利于回顾复习，所以我决定在电脑上弄一个文档，专门记录这两周的所有笔记。 另外也算是一个日记吧，记录一下自己现阶段的一些思考和观点，日后也是一个难忘的回忆。 另外这样记录的缺点就是很杂乱，各种各样的东西都在上面，所以最好是每个月有一个总结，一部分优秀的内容，可以重新开一篇文章写，更具备系统">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yangstar23.github.io/2022-4-4/image-20220405225036167.png">
+<meta property="og:image" content="https://yangstar23.github.io/2022-4-4/image-20220405225600512.png">
+<meta property="og:image" content="https://yangstar23.github.io/2022-4-4/image-20220405225813587.png">
+<meta property="og:image" content="https://yangstar23.github.io/2022-4-4/image-20220405230632586.png">
+<meta property="og:image" content="https://yangstar23.github.io/2022-4-4/image-20220405230929459.png">
+<meta property="og:image" content="https://yangstar23.github.io/2022-4-4/image-20220417004248820.png">
+<meta property="og:image" content="https://yangstar23.github.io/2022-4-4/image-20220417004308973.png">
+<meta property="og:image" content="https://yangstar23.github.io/2022-4-4/image-20220404203938024.png">
+<meta property="og:image" content="https://yangstar23.github.io/2022-4-4/image-20220404203919307.png">
+<meta property="og:image" content="https://yangstar23.github.io/2022-4-4/image-20220404231858941.png">
+<meta property="og:image" content="https://yangstar23.github.io/2022-4-4/image-20220404231931771.png">
+<meta property="og:image" content="https://yangstar23.github.io/2022-4-4/image-20220404184055752.png">
+<meta property="og:image" content="https://yangstar23.github.io/2022-4-4/image-20220412103402817.png">
+<meta property="og:image" content="https://yangstar23.github.io/2022-4-4/image-20220412094619108.png">
+<meta property="og:image" content="https://yangstar23.github.io/2022-4-4/bcaecfab2da9f88d6ef3265b2420fb2.jpg">
+<meta property="og:image" content="https://yangstar23.github.io/2022-4-4/43f584c14dbf19d8662d867c47697d5.jpg">
+<meta property="og:image" content="https://yangstar23.github.io/2022-4-4/864d5d54755795e511d2466dc184d43.jpg">
+<meta property="og:image" content="https://yangstar23.github.io/2022-4-4/image-20220408120634177.png">
+<meta property="article:published_time" content="2022-04-04T03:23:45.000Z">
+<meta property="article:modified_time" content="2022-06-06T07:31:28.000Z">
+<meta property="article:author" content="yagnstar">
+<meta property="article:tag" content="博客,blog,java,计算机">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yangstar23.github.io/2022-4-4/image-20220405225036167.png">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="this.media='all'">
+        
+    
+
+    
+    
+
+    
+
+     
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ 
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">Ystar</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">全部文章</a>
+                
+                    <a href="/friends/" class="navbar-menu button">友链</a>
+                
+                    <a href="/artitalk/" class="navbar-menu button">说说</a>
+                
+                    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="navbar-menu button">读书笔记</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">全部文章</a>
+                
+                    <a href="/friends/" class="dropdown-menu button">友链</a>
+                
+                    <a href="/artitalk/" class="dropdown-menu button">说说</a>
+                
+                    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="dropdown-menu button">读书笔记</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        2022年4.4-4.10（第6周）总结
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2022/04/" class="post-meta__date button">2022-04-04</a>
+        
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header">
+    <div class="post__expire" id="post-expired-notify">
+        <p>
+            本文最后更新于 &lt;span id=&#34;expire-date&#34;&gt;&lt;/span&gt; 天前，文中部分描述可能已经过时。
+        </p>
+    </div>
+    <script>
+        (() => {
+            var update = Date.parse("2022-06-06"),
+                date = new Date(),
+                now = date.getTime(),
+                expire = now - update,
+                expire_days = Math.floor(expire/(24*3600*1000));
+            if (expire_days >= 50) {
+                document.querySelectorAll('#expire-date')[0].innerHTML = expire_days;
+                document.querySelectorAll('#post-expired-notify')[0].style.display = 'block';
+            }
+        })();
+    </script>
+</div>
+    <div class="post__content">
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这是一次全新的尝试，由于现阶段科目繁多，笔记、心得、思考写的太过于分散，书上有、ipad上有、电脑上也有，不利于回顾复习，所以我决定在电脑上弄一个文档，专门记录这两周的所有笔记。</p>
+<p>另外也算是一个日记吧，记录一下自己现阶段的一些思考和观点，日后也是一个难忘的回忆。</p>
+<p>另外这样记录的缺点就是很杂乱，各种各样的东西都在上面，所以最好是每个月有一个总结，一部分优秀的内容，可以重新开一篇文章写，更具备系统性。</p>
+<h1 id="缓考"><a href="#缓考" class="headerlink" title="缓考"></a>缓考</h1><h2 id="计算机组成原理缓考复习"><a href="#计算机组成原理缓考复习" class="headerlink" title="计算机组成原理缓考复习"></a>计算机组成原理缓考复习</h2><p>1.计算机模型：<br>cpu的组成，冯诺依曼和哈弗结构的特点</p>
+<p>CPU:</p>
+<p>控制器：控制控制，就是发号施令，控制各个部件有序的工作，具体讲就是：从内存中取出解题步骤加以分析，然后执行某种操作</p>
+<p>运算器（ALU、通用寄存器、数据缓冲寄存器、状态条件寄存器）：其实就是进行加减乘除运算的东西，还可以逻辑运算</p>
+<p>cache</p>
+<p>指令和数据放在同一个存储器里：冯诺依曼结构<br>指令和数据分别放在两个存储器里：哈弗结构</p>
+<p>2.编码和ALU计算基本问题：<br>进制转换，ALU能够实现的运算，整数补码的表示范围，浮点数运算的溢出，使用不同的方法表示10进制数据;<br>32位IEEE754的编码规则，真值计算;</p>
+<p>浮点数编码和乘法运算。</p>
+<ul>
+<li>进制转换：这个不难<ul>
+<li>2-10</li>
+<li>10-2</li>
+<li>2-16</li>
+</ul>
+</li>
+<li>ALU（Arithmetic&amp;logical Unit算术逻辑单元）</li>
+</ul>
+<p>3.存储器的问题：<br>双端口DRAM储存器速度快的原因？<br>储存器设计，容量扩展，地址线和数据线的位数，地址线和数据线的分配，芯片的片数，芯片的组织，</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_44184450/article/details/105850173">计算机组成中位、字节、字、字长、存储单元、存储字、存储字长的辨析</a></p>
+<p>4.总线，接口基本问题：<br>地址总线的功能；<br>几种不同的数据传送模式特点，</p>
+<p>5.指令和指令编码的问题：<br>指令操作数的基本寻址方式；<br>指令周期的第一个cpu周期和第2个cpu 周期的功能，访问主存的区别；<br>根据给定的指令编码格式，分析基本问题：表示不少条不同的指令？求有效地址EA，保存操作数主存的容量？</p>
+<p>指令：操作码+地址码</p>
+<p>操作码op：干什么事情，是加减乘除，还是存取</p>
+<p>地址码A：运算数据是哪里来的，或是运算结果应该存取哪里</p>
+<ul>
+<li>寻址方式</li>
+</ul>
+<ol>
+<li><p>立即寻址 MOV AL ,#5</p>
+</li>
+<li><p>直接寻址 MOV AX, [1000H]</p>
+<ul>
+<li>指令的地址码给出操作数所在的存储单元地址 A=EA</li>
+</ul>
+<img src="/2022-4-4/image-20220405225036167.png" alt="image-20220405225036167" style="zoom: 67%;"></li>
+<li><p>间接寻址 </p>
+<ul>
+<li><strong>A为操作数地址</strong>（EA)的地址</li>
+</ul>
+</li>
+<li><p>寄存器寻址</p>
+<p><img src="/2022-4-4/image-20220405225600512.png" alt="image-20220405225600512"></p>
+</li>
+<li><p>寄存器间接寻址 </p>
+<p><img src="/2022-4-4/image-20220405225813587.png" alt="image-20220405225813587"></p>
+</li>
+<li><p>变址寻址</p>
+<p><img src="/2022-4-4/image-20220405230632586.png" alt="image-20220405230632586"></p>
+</li>
+<li><p>基址寻址</p>
+<p><img src="/2022-4-4/image-20220405230929459.png" alt="image-20220405230929459"></p>
+<p>适用于多用户</p>
+</li>
+<li><p>相对寻址 </p>
+</li>
+</ol>
+<p>6.cpu和微指令的问题：<br>机器指令与微指令的关系；<br>cpu流水线中的相关问题，cpu的基本功能；<br>微指令编码，判别测试的方法，控存容量的大小，分析微程序流程图，发现指令要实现的功能。</p>
+<p>7.信息交换与接口的问题：</p>
+<p>几种不同的IO方式特点；</p>
+<p>​    单总线结构：一条单一的数据总线来连接cpu、主存和IO设备</p>
+<p><img src="/2022-4-4/image-20220417004248820.png" alt="image-20220417004248820"></p>
+<p>​    双总线：在cpu和I/O 主存之间采用多条主线</p>
+<p><img src="/2022-4-4/image-20220417004308973.png" alt="image-20220417004308973"></p>
+<p>中断的基本概念和过程，</p>
+<p>​    程序中断</p>
+<p>​    简单中断</p>
+<p>知识点</p>
+<ol>
+<li><p>中央处理器CPU</p>
+<p>主要寄存器</p>
+<ul>
+<li>DR数据缓冲寄存器</li>
+<li>IR指令寄存器</li>
+<li>PC程序计数器</li>
+<li>AR数据地址寄存器</li>
+<li>通用寄存器</li>
+<li>PSW状态字寄存器</li>
+</ul>
+<p>指令周期</p>
+<ul>
+<li>MOV指令<ol>
+<li>RR型指令，两个CPU周期</li>
+</ol>
+</li>
+<li>LAD指令</li>
+<li>ADD指令<ol>
+<li>RR型指令，两个周期</li>
+</ol>
+</li>
+</ul>
+<p>方框图表示指令周期</p>
+<p>微程序控制器</p>
+<ol>
+<li>控制存储器：只读ROM，一般不能变动，存着各种要实现的伪指令</li>
+<li>微指令寄存器</li>
+<li>地址转移逻辑</li>
+</ol>
+<p>机器指令和微指令的关系：一条机器指令对应一个微程序</p>
+<p>流水CPU</p>
+</li>
+</ol>
+<h2 id="数据结构缓考复习"><a href="#数据结构缓考复习" class="headerlink" title="数据结构缓考复习"></a>数据结构缓考复习</h2><ol>
+<li><p>顺序表</p>
+<p>常用操作</p>
+<p>插入：把后面的元素后移，给新元素腾出位置</p>
+<p>删除：找到目标元素，把后面的元素整体向前移动1个位置</p>
+</li>
+<li><p>链表</p>
+<p>基本操作</p>
+<p>插入：</p>
+<p>1、把<strong>新插入的结点</strong> 的next指针  指向  <strong>插入位置的后置结点</strong></p>
+<p>2、将 <strong>插入位置前置结点</strong>的next指针指向 <strong>新插入的结点</strong></p>
+<p>删除：</p>
+<p>1、将结点从链表中摘下来</p>
+<p>2、释放空间</p>
+</li>
+<li><p>栈</p>
+<p>先进后出</p>
+<p>顺序栈：</p>
+<p><img src="/2022-4-4/image-20220404203938024.png" alt="image-20220404203938024"></p>
+<ul>
+<li> 入栈：</li>
+<li>top=-1,入了第一个元素后top=0,元素被存a[0]中</li>
+</ul>
+<p>链栈</p>
+<p><img src="/2022-4-4/image-20220404203919307.png" alt="image-20220404203919307"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">head-&gt;NULL</span><br><span class="line">head-&gt;1-&gt;NULL</span><br><span class="line">head-&gt;1-&gt;2-&gt;NULL</span><br><span class="line">head-&gt;1-&gt;2-&gt;3-&gt;NULL</span><br><span class="line">head-&gt;1-&gt;2-&gt;3-&gt;4-&gt;NULL</span><br></pre></td></tr></table></figure></li>
+<li><p>队列</p>
+<p>先进先出</p>
+<p>rear(后方的)</p>
+<p>top</p>
+<p>入队的时候rear向左移动</p>
+<p><img src="/2022-4-4/image-20220404231858941.png" alt="image-20220404231858941"></p>
+<p>出队的时候top向右移动</p>
+<p><img src="/2022-4-4/image-20220404231931771.png" alt="image-20220404231931771"></p>
+</li>
+<li><p>串</p>
+<p>由0个或者多个字符串组成的有限序列</p>
+</li>
+<li><p>树</p>
+<ol>
+<li>结点：每一个用树这种数据结构存储的元素。被称为一个结点</li>
+<li>叶子结点：终端结点</li>
+<li>结点的度：对一个结点来说，拥有的子树的数量，成为结点的度</li>
+<li>结点的层次：从根开始，树根为第1层，数到最下面，有几层深度就是多少</li>
+<li>子树</li>
+<li>空树</li>
+<li>二叉树：每个结点的度不能超过2，只能是0、1、2</li>
+<li>满二叉树：每个结点的度都是2</li>
+<li>完全二叉树：左边排完，才排右边</li>
+</ol>
+</li>
+<li><p>图</p>
+</li>
+<li><p>时间复杂度</p>
+</li>
+</ol>
+<h2 id="离散数学缓考复习"><a href="#离散数学缓考复习" class="headerlink" title="离散数学缓考复习"></a>离散数学缓考复习</h2><h1 id="课程"><a href="#课程" class="headerlink" title="课程"></a>课程</h1><h2 id="软件工程概论"><a href="#软件工程概论" class="headerlink" title="软件工程概论"></a>软件工程概论</h2><p>2022年4月4日16:28:12</p>
+<p>顺序图（需求）：参与者和系统的<strong>消息交互</strong></p>
+<p>活动图（需求）：系统动作描述，从头到尾走一遍</p>
+<p>case study：学习（copy code）和模仿，之后作出创新，不一样的东西</p>
+<p>如果没有例子呢？那就要estimation，评估。</p>
+<p>并发：实际上只是在做一件事情，但是由于CPU切换的太快，以至于感觉到在做很多事情</p>
+<p>并行：应该是多核心的处理器，就具备了同时处理多个任务的能力，这些任务彼此不会相互干扰</p>
+<img src="/2022-4-4/image-20220404184055752.png" alt="image-20220404184055752" style="zoom:33%;">
+
+
+
+<p>传统过程模型：</p>
+<ol>
+<li><p>开发模型(从无到有)：瀑布、V、喷泉、增量</p>
+<img src="/2022-4-4/image-20220412103402817.png" alt="image-20220412103402817" style="zoom: 50%;"></li>
+<li><p>演化模型：(东西已经有了，不断更新换代和优化)</p>
+<p>原型</p>
+<p>并发(concurrent)：强调变更，change，需求经常变更</p>
+<p>螺旋(the spiral):一圈一圈慢慢变大</p>
+</li>
+</ol>
+<p>敏捷模型：</p>
+<ol>
+<li><p>srum：增量、迭代</p>
+<ol>
+<li><p>透明——任务看板</p>
+<ul>
+<li>领歌<ul>
+<li>用户故事user story</li>
+<li>产品backlog</li>
+<li>devops</li>
+<li>燃尽图</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>检验</p>
+<p>找问题、优化</p>
+</li>
+<li><p>适应</p>
+</li>
+</ol>
+</li>
+<li><p>xp</p>
+<p>xp设计</p>
+<ul>
+<li>kiss法则</li>
+<li>CRC card(class-responsibility-)</li>
+<li>spike solutions:攻克难题</li>
+<li>refactoring:重构，1.0——&gt;2.0</li>
+</ul>
+<p>xp coding</p>
+<ul>
+<li>pair programming :绝对编程</li>
+<li>test</li>
+<li>customer join顾客的参与挺多</li>
+</ul>
+<p>AOSD：面向方面(切面)的软件开发</p>
+<p>Unified Process(UP):统一过程模型,厚重？</p>
+</li>
+<li><p>软件过程评估process assessment and improvement</p>
+</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://www.leangoo.com/">scrum leangoo</a> </p>
+<p><a target="_blank" rel="noopener" href="https://www.scrumcn.com/agile/scrum-knowledge-library/%E4%BB%80%E4%B9%88%E6%98%AFscrum.html">什么是Scrum</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/19638322/answer/759271217">如何实施 SCRUM ？</a></p>
+<p><a target="_blank" rel="noopener" href="http://www.ruanyifeng.com/blog/2016/09/software-architecture.html">软件架构</a></p>
+<ul>
+<li>分层架构，最常见的</li>
+<li>事件驱动架构</li>
+<li>微核架构</li>
+<li>微服务架构</li>
+</ul>
+<h2 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h2><p>2022年4月5日09:02:49</p>
+<p>电子邮件的三个主要组成：</p>
+<p>user agents （ua）浏览器之类的</p>
+<p>mail servers </p>
+<ol>
+<li>mailbox</li>
+<li>messenge queue</li>
+</ol>
+<p>simple mail transfer protocol: SMTP</p>
+<ol>
+<li>基于TCP</li>
+<li>对方的邮件服务器默认端口号是25（80:http服务器，35dns）FTP：21,20</li>
+<li>直接传输</li>
+<li>必须是7位ASCII</li>
+</ol>
+<p>Mail access protocols接收协议</p>
+<p>pop</p>
+<p>IMAP</p>
+<p>http</p>
+<p>2022年4月12日08:30:08周二</p>
+<p>peer to peer 点对点，端对端p2p</p>
+<p>proxy server代理服务</p>
+<p>clients客户机</p>
+<p>may be intermittently connected可以间歇的连接</p>
+<ol>
+<li><p>进程通讯</p>
+<ol>
+<li>发起通讯：客户</li>
+<li>等待服务：服务器</li>
+</ol>
+</li>
+<li><p>socket</p>
+<ol>
+<li>由操作系统负责，进程比作一个房子，那么套接字就是它的门</li>
+</ol>
+</li>
+<li><p>进程寻址</p>
+<ol>
+<li>IP：唯一的表示想要连接的那一台主机</li>
+<li>端口号：18bit，6万个左右</li>
+</ol>
+</li>
+<li><p>应用层协议</p>
+<ol>
+<li>交换的报文类型types of messages exchanged</li>
+<li>各种报文类型的语法message syntax</li>
+<li>字段的语义message semantics </li>
+<li>一个进程何时发送报文，对报文进行响应rules</li>
+</ol>
+</li>
+<li><p>TCP还是UDP(比如DNS就是基于udp)？</p>
+<ol>
+<li>可靠与速度的选择</li>
+</ol>
+</li>
+<li><p>mail system have three components（邮件系统的组成）:</p>
+<ol>
+<li>user agent(用户代理)</li>
+<li>mail server(邮件服务器)</li>
+<li>Simple Transfer Protocol-SMTP(简单邮件传输协议)</li>
+</ol>
+</li>
+<li><p>DNS提供的服务</p>
+<ol>
+<li>host aliasing主机别名</li>
+<li>mail server aliasing</li>
+<li>load distribution</li>
+</ol>
+<h3 id="端口"><a href="#端口" class="headerlink" title="端口"></a><a target="_blank" rel="noopener" href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml?&page=3">端口</a></h3></li>
+</ol>
+<h3 id="第三章-传输层transport-layer"><a href="#第三章-传输层transport-layer" class="headerlink" title="第三章 传输层transport layer"></a>第三章 传输层transport layer</h3><ol>
+<li><p>网络层和传输层的关系</p>
+<ol>
+<li>网络层：提供主机之间的逻辑通讯</li>
+<li>运输层：为运行在不同主机上的进程之间提供逻辑通讯</li>
+</ol>
+</li>
+<li><p>多路复用和多路分解</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.rfc-editor.org/rfc/rfc768">UDP(use datagram protocol)</a>报文段结构</p>
+<img src="/2022-4-4/image-20220412094619108.png" alt="image-20220412094619108" style="zoom: 50%;">
+
+<p>头部：8bit</p>
+</li>
+<li><p>UDP校验和（Checksum)</p>
+<ol>
+<li><p>定义</p>
+<p>等于和的反码，溢出了要回卷哦。</p>
+<p>只能知道有没有错，并且提出警告，无法判断错误出在哪，而且就算检测出来没问题也可能还是有错误</p>
+</li>
+<li><p>为什么选择UDP:速度快</p>
+</li>
+</ol>
+<p>​    </p>
+</li>
+</ol>
+<h2 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h2><p>2022年4月5日14:00:51</p>
+<p>cardinality基数（关系）</p>
+<p><strong>:star:一对一：</strong>一个学生选一个数据库老师上，max-card（E,R）=1</p>
+<p>外键加在哪里都可以</p>
+<p>强制参与：最好就是将两个实体对应的两个表合并，这种就不用外键了</p>
+<p>选择参与：任何一方加外键</p>
+<p><strong>:star:一对多</strong>：max-card（E,R）=N</p>
+<p>多方加外键</p>
+<p>**:star:多对多:**max-card（E,R）=N，max-card（R,E）=N</p>
+<p>单独转换为一个关系表</p>
+<img src="/2022-4-4/bcaecfab2da9f88d6ef3265b2420fb2.jpg" alt="bcaecfab2da9f88d6ef3265b2420fb2" style="zoom:25%;">
+
+<p>:star:最多连了几个？—max-card—决定关系基数  </p>
+<p>:star:最少又连了几个？—min-card—决定是可选参与还是强制参与（1）</p>
+<p>一般来讲：cad(E,R)=(X,Y) ，X是max ，Y是min</p>
+<img src="/2022-4-4/43f584c14dbf19d8662d867c47697d5.jpg" alt="43f584c14dbf19d8662d867c47697d5" style="zoom: 25%;">
+
+<p>一个员工干多个项目，一个项目也可以由多个员工来做</p>
+<p>—所以在员工表里如果有项目这一列，那么就会重复写好多行，产生冗余了就，哪边加外键都不行，重新弄一个表要</p>
+<p>员工必须做一个项目，项目可能才开始还没有员工</p>
+<p>鸭爪表示多方，一个圈表达0，|表示1</p>
+<p><img src="/2022-4-4/864d5d54755795e511d2466dc184d43.jpg" alt="864d5d54755795e511d2466dc184d43"></p>
+<p>一个比赛，多个球员，一个球员可以参加多个比赛</p>
+<p>一个比赛至少一个球员，一个球员可以参加0个比赛</p>
+<ul>
+<li>N元关系</li>
+</ul>
+<p>转换为2元关系</p>
+<p>规范化-画一个正确的图</p>
+<h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><p>虚拟内存</p>
+<h2 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h2><ol>
+<li>两种二义性问题<ol>
+<li>直接二义性</li>
+<li>间接二义性</li>
+</ol>
+</li>
+</ol>
+<hr>
+<h1 id="杂谈"><a href="#杂谈" class="headerlink" title="杂谈"></a>杂谈</h1><h2 id="垄断"><a href="#垄断" class="headerlink" title="垄断"></a>垄断</h2><p>这个星期学校把万言超市和蜜雪冰城等第三方店铺关门了，由于又不准点外卖，所以学生的每一分钱都将流入学校后勤集团的腰包中，这是一件细思极恐的事情，吃饭、喝水、超市购物、洗澡，一个学生的所有支出，都离不开后勤集团</p>
+<h2 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h2><p>我的记性一般，很多东西学了之后就会忘记，比如我现在还记不得typora的很多操作，都是用到了之后再去翻以前写下的记录，不然的话就只能去重新百度，挺浪费时间的，所以合理的记录也是一个很重要的事情，重要程度甚至超过了学这个过程，不及时记录下来=白学。</p>
+<h2 id="学习的心态"><a href="#学习的心态" class="headerlink" title="学习的心态"></a>学习的心态</h2><p>我们的实验课，两节课共计90分钟，但是去完成一个实验的过程中会遇到各种各样的问题，这时候就需要不断的去搜索，去阅读文档，这个过程很痛苦，解决完一个问题的高兴劲还没有过去，下一个问题就接踵而来，确实是很折磨人，所以心态很重要，没必要一直死磕，搞不出来去做其他事情就行，摆个几天再回过头来看，人生苦短，没必要因为一个学习或者实验上的问题就把自己搞得郁闷:pensive:</p>
+<p>为什么计算机的技术可以有那么多？学完一个永远有下一个，我选择这个行业是正确的吗？</p>
+<h2 id="封校"><a href="#封校" class="headerlink" title="封校"></a>封校</h2><p>只有在失去自由之后才会知道它的宝贵，我已经在这片土地上生存了35天了，与外界失去了联系…， 确实食堂是会吃腻的，尽管以前我感觉食堂可以打个80分左右，但是天天吃只会让我对它的好感逐渐消失:sweat:</p>
+<p>另外其实我也挺感谢封校的，无法出去，也就意味着没有办法把时间浪费在出去玩的路上，把更多时间花在学习上，花在自己感兴趣的事情上。</p>
+<p>另外我已经放弃思考什么时候解封这件事情了，做最坏的打算，放假才能出去:sweat:</p>
+<p>这确实是一个不合理的制度，而且现在也没有什么能力去与之对抗，骂归骂，更多的是能让以后的自己有实力，有底气去把这些傻逼的东西撕碎。</p>
+<h2 id="科班"><a href="#科班" class="headerlink" title="科班"></a>科班</h2><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/57746751/answer/544319911">计算机科班出身的优势是什么？</a></p>
+<p>昨晚上看了一个问题</p>
+<p>确实，经常有人回答问题，职业运动员吊打普通爱好者，我相信，但是我又有那么一丝的叛逆，为什么普通人，特别是有天赋的普通人，不能战胜专业领域的人呢？毕竟谁不喜欢屌丝逆袭的剧本呢？</p>
+<p>这让我想起另外一件事，以前我认为剪视频简单，周三我发现困难是画面和文字稿的匹配。</p>
+<p>随着短视频的发展，专业的视频博主不断受到正反馈，和普通人的差距已经很大，如果现在加入，唯一的方法就是不要多想，不要追求完美，直接开拍，运用敏捷开发的理论，快速迭代，让自己的每一个视频都比上一个拍的更好。</p>
+<p>这是目前我想到方案，其实我有很多能拍的东西，但是我一直在拖延:face_with_head_bandage:，到现在还没有作出尝试。</p>
+<h2 id="《糖醋集》"><a href="#《糖醋集》" class="headerlink" title="《糖醋集》"></a>《糖醋集》</h2><p>幸福的人之所以感到幸福，只是因为不幸的人们在默默的背负着自己的重担。一旦没有了这种沉默，一些人的幸福便不可以想象。这是普遍的麻木不仁。真应当在每一个心满意足的幸福的人的背后，站上一个人，拿着小锤子，经常敲门提醒他：世上还有不幸的人。</p>
+<p>现在有个更加时髦的说法：“当你负重前行，有人替你岁月静好”</p>
+<img src="/2022-4-4/image-20220408120634177.png" alt="image-20220408120634177" style="zoom:25%;">
+
+<p>最幸运的和最不幸的人应该都是少数，普通人碰不上中彩票，也碰不上空难。小概率事件降临在普通人头上确实是小概率。</p>
+<p>很大程度上一个普通人大学毕业之后，进入社会被毒打，基本上一生也就定型了，(⊙o⊙)…，说的就是我，快毕业了。还能做些什么呢？在这所剩下的时间里，之前一直觉得时间的漫长，在漫无目的的日子里蹉跎了岁月，更多的是碎片化的阅读，浅尝辄止，急功近利，渴望速成，缺少沉淀，但是从现在开始，我要改变，（先从买个降噪耳罩开始）静下心来阅读，来琢磨一些我感兴趣的事情。</p>
+<p>我经常在想应该妥协吗？没有天赋确实很难在一个领域达到顶级水平，如果无法拓展深度，那是否应该去尝试发展宽度呢？让自己的人生更加丰富多彩，自娱自乐了属于是。</p>
+<h2 id="失败"><a href="#失败" class="headerlink" title="失败"></a>失败</h2><p>人生中的失败太多了，高考失败，考研失败，感情失败，工作失败…..甚至打游戏都打不赢，随便在搜索引擎上输入失败这个关键字，就会有无数的loser，用文字默默的诉说着自己那段糟糕的经历</p>
+<p>我害怕失败吗？确实害怕，甚至因为害怕失败而变得害怕去开始一个新的尝试，因为不去尝试，也就不会失败，总是在舒适圈里徘徊，毫无进步。</p>
+<p>失败完全可以理解成为积极进取的结果，只有生命力充沛的人，才可能会有一次又一次的失败，一味的恐惧失败，只会让自己畏首畏尾，丧失进取心。</p>
+<p>挫折能让脸皮变厚，如果脸皮进化到了和城墙一个厚度，那么什么都无法杀死你。一开始失败可能还会让你脆弱的心灵受到沉重的打击，但是随着更多次的尝试，可能自己也会乐在其中，虽然没有正反馈确实是很令人难受，，但是成功哪里有那么的容易呢？</p>
+<p>人生的最终结果是一个极大值函数，而不是一个平均函数，这辈子能能有一次高光时刻也算没有白来一次世界。</p>
+<p>不要害怕挫折、被拒绝，这是对你的肯定和褒扬！:grin:</p>
+<p>这里我想起了高中物理老师李永富的喜欢说的一句话：成功者和失败者的区别是，谁能更快的从失败中吸取教训，并且改正，不知道他现在还会不会对学生说这句话的，现在想想确实挺有道理的。</p>
+<h2 id="stay-foolish"><a href="#stay-foolish" class="headerlink" title="stay foolish"></a>stay foolish</h2><p>这句话其实我早就已经听说过了，乔布斯的一句名言，保持饥饿，保持愚蠢，但是其实我一直不太懂，感觉这句话很奇怪，什么是保持饥饿？什么是保持愚蠢，这都可以保持的吗？</p>
+<p>知道今天看到一篇文章才了解了，保持饥饿，才会对美食产生向往，保持愚蠢才会对未知的事物充满好奇心。</p>
+<p>人总是容易对自己产生高估，认为自己是万里挑一的天才。然而，大概率你只是一个普通人。</p>
+<p>所以对我来说，无论是做什么事情，都要把自己当做一个小白，对未知事物保持敬畏，永远不要轻敌。</p>
+<p>可能我很长时间都沉浸在一个过于高估的我的世界———逃课、只想快速完成各项实验，而忽略了这个探索的过程、大部分时间留给了玩乐。如果从一个学生的角度来看，我过去的一年，确实很失败。</p>
+<p>由于以前的基础，大一还可以跟得上，但是几乎没有什么收获，大多数时候全都是在啃老本。到了大二上就很吃力了，三门考试还没考，全靠速成。</p>
+<p>这学期才开始一半都没有我就已经感觉到压力山大，时间不够用了，这是我以前从来没有出现过的情况，一方面我感觉到应该庆幸，因为懂得珍惜时间，但是另一方面也会反思自己过去浪费了那么多的时间，有那么一丝可惜。</p>
+<p>好在浪子回头金不换，打好基础吧少年。</p>
+<h2 id="主动学习"><a href="#主动学习" class="headerlink" title="主动学习"></a>主动学习</h2><p>这种学习方法其实是我在啥也没学，期末考抱佛脚的时候发明的。</p>
+<p>照着目录看有什么要学习的知识点，然后去网上搜视频看。</p>
+<p>优点是能快速了解学的东西是什么，勾勒出一个大致的轮廓，同时对自己感兴趣的知识点先进行探索，而不是等着教科书和老师来教会；</p>
+<p>缺点是不太深入，缺少细节。</p>
+<hr>
+<h1 id="FIFA技巧"><a href="#FIFA技巧" class="headerlink" title="FIFA技巧"></a>FIFA技巧</h1><h2 id="FIFA22教程-百分百提升进攻水平的三点建议"><a href="#FIFA22教程-百分百提升进攻水平的三点建议" class="headerlink" title="FIFA22教程 百分百提升进攻水平的三点建议"></a><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Jq4y197jJ/?spm_id_from=333.788.recommend_more_video.0">FIFA22教程 百分百提升进攻水平的三点建议</a></h2><ul>
+<li>L1 ：呼叫球员跑位</li>
+<li>不要一直按住加速，学会停止</li>
+<li>学会回传</li>
+</ul>
+<h2 id="FIFA22教程-快速提升进攻的14个技巧"><a href="#FIFA22教程-快速提升进攻的14个技巧" class="headerlink" title="FIFA22教程 快速提升进攻的14个技巧"></a><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV14q4y1R7Fu?spm_id_from=333.337.search-card.all.click">FIFA22教程 快速提升进攻的14个技巧</a></h2><ul>
+<li>大力传球+一脚触球，控制节奏 ✔️</li>
+<li>横拉传球，防守球员难阻止 ✔️</li>
+<li>L1、R1的使用</li>
+<li>学会回传，换边（w按满、r1加d）✔️</li>
+<li>过顶直塞L1+WW✔️</li>
+<li>球员锁定</li>
+<li>护球键L2，控球，控节奏✔️</li>
+<li>假射 L1 A+X✔️</li>
+<li>只轻拨动左摇杆，拨动一半就可以，适合灵敏的球员✔️</li>
+<li>搓射✔️</li>
+<li>角球战术：头球近门柱，远门柱会被门将封堵住✔️</li>
+<li>任意球：上旋球，选中门柱偏上的地方✔️</li>
+</ul>
+<hr>
+<h1 id="问题记录"><a href="#问题记录" class="headerlink" title="问题记录"></a>问题记录</h1><h3 id="中文输入法的安装"><a href="#中文输入法的安装" class="headerlink" title="中文输入法的安装"></a>中文输入法的安装</h3><p><a target="_blank" rel="noopener" href="https://pinyin.sogou.com/linux/">https://pinyin.sogou.com/linux/</a></p>
+<p>上面有明确的教程</p>
+<h3 id="如何一次性修改ppt中所有字体"><a href="#如何一次性修改ppt中所有字体" class="headerlink" title="如何一次性修改ppt中所有字体"></a><a target="_blank" rel="noopener" href="https://wenwen.soso.com/z/q875352288.htm">如何一次性修改ppt中所有字体</a></h3><hr>
+<h1 id="碎片知识"><a href="#碎片知识" class="headerlink" title="碎片知识"></a>碎片知识</h1><p>编译就是把高级语言变成计算机能够读懂的语言，但是计算机是怎么读懂的，这估计和词法分析有关 </p>
+<p>我想了想，对于爱好这个东西，如果从实用的角度来看，精通一个，远比粗略的了解一堆要强，比如郝老师的吉他水平，足以让他成为焦点，对我来说，太多的爱好反而让我不能够把心思聚焦在一个位置，尽管对一切位置事物充满兴趣是我的一大优点，但是随着人年龄的增长，总得找一个爱好去混饭吃吧，爱好能够成为工作，已经是菩萨保佑了，但愿可以成功吧.</p>
+<h2 id="KISS法则（keep-it-Simple-Stupid"><a href="#KISS法则（keep-it-Simple-Stupid" class="headerlink" title="KISS法则（keep it Simple ,Stupid)"></a><a target="_blank" rel="noopener" href="https://blog.sciencenet.cn/blog-414166-562616.html">KISS法则（keep it Simple ,Stupid)</a></h2><p>避免完美主义，程序能够跑起来就谢天谢地了。大的项目架构很复杂，具体到某个小的地方要设计得简单易懂，从容易到复杂，逐步推进。但是即使做到了每个环节最简单，但由于不确定性的存在，整个系统还是会出现不可控的复杂性。</p>
+<p>今天我在另外一个地方看见了一个这个法则，内容与Unix之父有关，说的是几个大公司一起开发操作系统，但是搞的内容过于复杂了，结果后来没有搞出来，后面项目停止之后Unix之父和一个朋友继续在这些研究基础上开发，就是遵循这个法则，搞了很多小的项目，堆在一起，取代了漫长的去开发一个大的项目，最终还是成功了。</p>
+<h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><p>写一个函数，对它测试一下，没问题了再写第二个，然后测试，没问题了再写第三个。</p>
+<h2 id="随机测试（Rondom-testing"><a href="#随机测试（Rondom-testing" class="headerlink" title="随机测试（Rondom testing)"></a>随机测试（Rondom testing)</h2><p>多弄几组数据看看，程序能不能通过，看看靠不可靠，有点像LeetCode上的测试用例吧</p>
+<h2 id="不要用root用账户做实验"><a href="#不要用root用账户做实验" class="headerlink" title="不要用root用账户做实验"></a>不要用root用账户做实验</h2><p>会改变实验相关文件的权限属性, 可能会导致开发跟踪系统无法正常工作; 更严重的, 你的误操作可能会无意中损坏系统文件, 导致系统无法启动!</p>
+<p>正确的做法是：永远用普通账号做写代码之类安分守己的事情，当需要root权限的时候再用<strong>sudo</strong>操作</p>
+<h2 id="RTFM"><a href="#RTFM" class="headerlink" title="RTFM"></a>RTFM</h2><p>在网上搜索，如果找不到办法解决</p>
+<p>翻阅手册！！</p>
+<h2 id="尽早发现bug"><a href="#尽早发现bug" class="headerlink" title="尽早发现bug"></a>尽早发现bug</h2><p>你需要在实现一个功能之后对它进行充分的测试. 随着时间的推移, 发现同一个bug所需要的代价会越来越大，问题如果出在以前的代码里，未来的代码没问题也会出错，回过头去找就是在加大发现的难度。</p>
+<h2 id="不要害怕bug"><a href="#不要害怕bug" class="headerlink" title="不要害怕bug"></a>不要害怕bug</h2><p>一个程序的实现可能90%的时间都是在调bug，比如<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Michael_Stonebraker">Michael Stonebraker</a>花5年时间搞出来的关系数据库，重要的其实是选对方法和工具，让程序最终运行起来，比如git这种版本控制工具。</p>
+<h2 id="单词word"><a href="#单词word" class="headerlink" title="单词word"></a>单词word</h2><p>session layer对话层，会话层</p>
+<p>circuit switching 电路交换</p>
+<p>queuing delay排队时延</p>
+<p>propagation delay传播时延</p>
+<p>frame帧</p>
+<p>client客户端</p>
+<p>manual page手册页</p>
+<p>fetch 获取</p>
+<p>decode     译码、破译</p>
+<p>excute 执行 excu</p>
+<p>token令牌，记号</p>
+<h2 id="美版iPhone-12支持的5G毫米波-为什么到国行版就没了？"><a href="#美版iPhone-12支持的5G毫米波-为什么到国行版就没了？" class="headerlink" title="美版iPhone 12支持的5G毫米波 为什么到国行版就没了？"></a><a target="_blank" rel="noopener" href="http://www.xinhuanet.com/tech/2020-11/04/c_1126695031.htm">美版iPhone 12支持的5G毫米波 为什么到国行版就没了？</a></h2><h2 id="了解字体的基础知识"><a href="#了解字体的基础知识" class="headerlink" title="了解字体的基础知识"></a><a target="_blank" rel="noopener" href="https://sspai.com/post/71957">了解字体的基础知识</a></h2><h2 id="奈飞发展史（英）"><a href="#奈飞发展史（英）" class="headerlink" title="奈飞发展史（英）"></a><a target="_blank" rel="noopener" href="https://www.aakashg.com/2022/01/18/netflix-experimentation/">奈飞发展史（英）</a></h2><hr>
+<h1 id="想做啥"><a href="#想做啥" class="headerlink" title="想做啥"></a>想做啥</h1><ul>
+<li>乐理</li>
+<li>出一个CD唱片</li>
+</ul>
+<p>虽然现在成为一个音乐人的门槛太低了，但是我认为最基本的音乐素养还是要有的，我真的很讨厌rapper，这也许是我的偏见，但是目前为止我就是这个样子。现代的一些好的软件确实能够起到很大的帮助，上手应该也是需要一段时间，慢慢学呗。</p>
+<p>至于为什么要CD唱片，我个人感觉有种很复古的感觉，如果要我设计封面的话，一定会搞得复古一点，其实自己做CD，让我想到的是古镇里一个叫彝人部落的音乐组合，小时候看过他们卖CD，他们靠这个赚钱，心态一个很不一样，就算卖一个他们的净利润能够达到10元，按照现在云南最低工资（一类地区）：1670，那么得卖出去167张，我觉得挺难的，至少让我卖这么多出去是很难，毕竟我的视频都没那么多人点赞:+1:</p>
+<ul>
+<li><p>足球</p>
+<ul>
+<li><p>花式起球</p>
+</li>
+<li><p>FIFA战术</p>
+<ul>
+<li><p>对战的时候确实很紧张的，但是昨天晚上睡着的时候我思考了一下，其实进攻套路很固定，很多个场景都是一样的情况，所以得总结一套战术</p>
+</li>
+<li><p>电脑人的配合跑位这个是需要研究一下的，比如怎么二过一</p>
+</li>
+<li><p>花式动作</p>
+<p>我觉得学几个，然后练熟了就可以</p>
+<ul>
+<li>牛尾巴</li>
+<li>踩单车</li>
+<li>马赛回旋</li>
+<li>脚后跟磕球</li>
+<li>ballroll</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>体能训练</p>
+</li>
+<li><p>甚至想买双球鞋</p>
+</li>
+</ul>
+</li>
+<li><p>读书</p>
+<ul>
+<li>未来的路</li>
+<li>未来世界的幸存者</li>
+<li>规模</li>
+</ul>
+</li>
+<li><p>魔方</p>
+<ul>
+<li><p>五阶</p>
+<ul>
+<li>中心块</li>
+</ul>
+</li>
+<li><p>四阶</p>
+<ul>
+<li>棱块合并最后一步</li>
+</ul>
+</li>
+<li><p>特殊还原</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://space.bilibili.com/261582436/channel/collectiondetail?sid=59030">CPU眼里的：编程知识</a></p>
+<h4 id="让工具回归工具，让你成为你。-https-space-bilibili-com-29959830-video"><a href="#让工具回归工具，让你成为你。-https-space-bilibili-com-29959830-video" class="headerlink" title="[让工具回归工具，让你成为你。](https://space.bilibili.com/29959830/video"></a>[让工具回归工具，让你成为你。](<a target="_blank" rel="noopener" href="https://space.bilibili.com/29959830/video">https://space.bilibili.com/29959830/video</a></h4><h4 id><a href="#" class="headerlink" title=")"></a>)</h4><h1 id="一周总结"><a href="#一周总结" class="headerlink" title="一周总结"></a>一周总结</h1><h2 id="2022年4-4-4-10（第6周）"><a href="#2022年4-4-4-10（第6周）" class="headerlink" title="2022年4.4-4.10（第6周）"></a>2022年4.4-4.10（第6周）</h2><p>本周记录了差不多6000的文字，大多数时间花在了缓考的复习上面，甚至翘了几节课，结果周五起来告诉我不考了，确实有一丝无语，再复习几次我都快学会了:weight_lifting_man:.</p>
+
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2022-06-06</p></div> 
+    <div class="post-entry__tags"></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/C-Notes/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            C++笔记
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/Survivor/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            《未来世界的幸存者》读后感
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+    <div class="post__comments content-card" id="comment">
+        
+    <h4>评论</h4>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="tcomment" class="twikoo_thread"></div>
+
+
+
+    </div>
+
+
+
+</main>
+
+            <footer class="footer">
+     
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+    
+
+
+    
+    
+    
+        <span id="busuanzi_container_site_uv" hidden>
+            <span></span>
+            <span id="busuanzi_value_site_uv"></span>
+            <span>Viewers</span>
+            
+                <span>|</span>
+            
+        </span>
+    
+    
+        <span id="busuanzi_container_site_pv" hidden>
+            <span></span>
+            <span id="busuanzi_value_site_pv"></span>
+            <span>Views</span>
+            
+        </span>
+    
+ 
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2021&nbsp;-&nbsp;2022 <a href="/">杨星博客</a>
+        </p>
+    
+    
+<!--    <p>Powered by <a href="https://f000.top" target="_blank">BuildNew</a>-->
+    <p>滇ICP备2021005610号</p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+    
+ 
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        let lazyloadT = Boolean('false'),
+            auto_fancybox = Boolean('false')
+        if (auto_fancybox) {
+            $(".post__content").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        } else {
+            $(".post__content").find("fancybox").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        }
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    <script>
+        function loadComment() {
+            let e;
+            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/twikoo@0.3.2/dist/twikoo.all.min.js',
+            document.body.appendChild(e);
+            e.onload = () => {
+                twikoo.init({
+                    envId: 'twikoo-0gv0i4p12778a6e6',
+                    el: '#tcomment'
+                });
+            };
+        }
+    
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+    
+        setTimeout(function () {
+            if (!isBot && supportsIntersectionObserver) {
+                var comment_observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        loadComment();
+                        comment_observer.disconnect();
+                    }
+                }, { threshold: [0] });
+                comment_observer.observe(document.getElementById('comment'));
+            } else {
+                loadComment();
+            }
+        }, 1);
+    </script>
+
+
+
+
+    </body>
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+        <link rel="shortcut icon" href="/images/favicon.ico">
+    
+    
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    
+    
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    
+    
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    
+    
+        <link rel="mask-icon" href="/images/safari-pinned-tab.svg">
+    
+
+
+    <!-- meta -->
+
+
+<title>GIT学习笔记 | 杨星博客</title>
+
+
+    <meta name="keywords" content="计算机基础, 博客,blog,java,计算机">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="Git和GitHub居然不是同一个东西:question:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GIT学习笔记">
+<meta property="og:url" content="https://yangstar23.github.io/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="杨星博客">
+<meta property="og:description" content="Git和GitHub居然不是同一个东西:question:">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yangstar23.github.io/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/www.appcoda.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg">
+<meta property="og:image" content="https://yangstar23.github.io/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20210812170603042.png">
+<meta property="og:image" content="https://yangstar23.github.io/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20210811222708503.png">
+<meta property="og:image" content="https://yangstar23.github.io/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20210811232948894.png">
+<meta property="article:published_time" content="2021-08-12T06:33:48.000Z">
+<meta property="article:modified_time" content="2022-06-06T07:18:40.000Z">
+<meta property="article:author" content="yagnstar">
+<meta property="article:tag" content="计算机基础">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yangstar23.github.io/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/www.appcoda.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="this.media='all'">
+        
+    
+
+    
+    
+
+    
+
+     
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ 
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">Ystar</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">全部文章</a>
+                
+                    <a href="/friends/" class="navbar-menu button">友链</a>
+                
+                    <a href="/artitalk/" class="navbar-menu button">说说</a>
+                
+                    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="navbar-menu button">读书笔记</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">全部文章</a>
+                
+                    <a href="/friends/" class="dropdown-menu button">友链</a>
+                
+                    <a href="/artitalk/" class="dropdown-menu button">说说</a>
+                
+                    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="dropdown-menu button">读书笔记</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        GIT学习笔记
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2021/08/" class="post-meta__date button">2021-08-12</a>
+        
+    <span class="separate-dot"></span><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="button">计算机</a>
+
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header">
+    <div class="post__expire" id="post-expired-notify">
+        <p>
+            本文最后更新于 &lt;span id=&#34;expire-date&#34;&gt;&lt;/span&gt; 天前，文中部分描述可能已经过时。
+        </p>
+    </div>
+    <script>
+        (() => {
+            var update = Date.parse("2022-06-06"),
+                date = new Date(),
+                now = date.getTime(),
+                expire = now - update,
+                expire_days = Math.floor(expire/(24*3600*1000));
+            if (expire_days >= 50) {
+                document.querySelectorAll('#expire-date')[0].innerHTML = expire_days;
+                document.querySelectorAll('#post-expired-notify')[0].style.display = 'block';
+            }
+        })();
+    </script>
+</div>
+    <div class="post__content">
+        <hr>
+<p><strong>Git和GitHub居然不是同一个东西</strong>:question:</p>
+<span id="more"></span>
+
+<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>作为计算机专业的学生，早就听说过了GitHub的大名，我尝试过注册了几次，但是不知道为什么网络总是会出现错误，打不开，就放弃了。直到我找到v2rayN，用上了稳定的梯子之后，才开始深入了解。</p>
+<p>Git和GitHub其实是两个东西！我也是学习过之后才发现的。</p>
+<p><img src="/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/www.appcoda.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg" alt="点击查看源网页"></p>
+<p>我学习的课程是bilibli上up主狂神说录制的，比较短小，讲课风格也很不错！</p>
+<p><img src="/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20210812170603042.png" alt="image-20210812170603042"></p>
+<h3 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h3><h4 id="1、集中版本控制"><a href="#1、集中版本控制" class="headerlink" title="1、集中版本控制"></a>1、集中版本控制</h4><p> 缺点：用户本地只有自己以前同步的版本，一旦服务器挂了就有点麻烦</p>
+<p>代表： SVN </p>
+<h4 id="2、分布式版本控制"><a href="#2、分布式版本控制" class="headerlink" title="2、分布式版本控制"></a>2、分布式版本控制</h4><p>每个人都有全部代码（有安全隐患，怕员工跑路，哈哈哈）</p>
+<p><img src="/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20210811222708503.png" alt="image-20210811222708503"></p>
+<h4 id="3、git是目前最先进的分布式版本控制系统"><a href="#3、git是目前最先进的分布式版本控制系统" class="headerlink" title="3、git是目前最先进的分布式版本控制系统"></a>3、git是目前最先进的分布式版本控制系统</h4><h4 id="4、git历史"><a href="#4、git历史" class="headerlink" title="4、git历史"></a>4、git历史</h4><p>linux内核维护工作者觉得提交补丁和保存归档是很繁琐的事务——2002年开始启用Bitkeeper来管理和维护代码——后面Bitkeeper结束了和linux的合作关系——然后Linux的缔造者Linus Torvalds花了两个星期搞出来了git</p>
+<p><img src="/Git%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/image-20210811232948894.png" alt="image-20210811232948894"></p>
+<h4 id="5、git的及环境配置"><a href="#5、git的及环境配置" class="headerlink" title="5、git的及环境配置"></a>5、git的及环境配置</h4><p>git bash ：unix与linux风格</p>
+<p>git cmd：windows风格</p>
+<p>git gui：图形化风格</p>
+<h4 id="6、基本Linux命令学习"><a href="#6、基本Linux命令学习" class="headerlink" title="6、基本Linux命令学习"></a>6、基本Linux命令学习</h4><p>cd：改变目录</p>
+<p>cd .. ：退回上一级目录</p>
+<p>clear：清屏</p>
+<p>exit：退出</p>
+<p>history：查看历史</p>
+<p>touch：新建一个文件</p>
+<p>mkdir：新建一个文件夹</p>
+<p>rm -r：删除文件</p>
+<p>rm -rf （这个命令在 Linux下不要尝试）</p>
+<h4 id="7、Git文件操作😂"><a href="#7、Git文件操作😂" class="headerlink" title="7、Git文件操作😂"></a>7、Git文件操作😂</h4><blockquote>
+<p>文件的四种状态</p>
+</blockquote>
+
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2022-06-06</p></div> 
+    <div class="post-entry__tags"><a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" class="post-tags__link button"># 计算机基础</a></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/FrontEnd/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            前端学习
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/test/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            博客功能测试
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+    <div class="post__comments content-card" id="comment">
+        
+    <h4>评论</h4>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="tcomment" class="twikoo_thread"></div>
+
+
+
+    </div>
+
+
+
+</main>
+
+            <footer class="footer">
+     
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+    
+
+
+    
+    
+    
+        <span id="busuanzi_container_site_uv" hidden>
+            <span></span>
+            <span id="busuanzi_value_site_uv"></span>
+            <span>Viewers</span>
+            
+                <span>|</span>
+            
+        </span>
+    
+    
+        <span id="busuanzi_container_site_pv" hidden>
+            <span></span>
+            <span id="busuanzi_value_site_pv"></span>
+            <span>Views</span>
+            
+        </span>
+    
+ 
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2021&nbsp;-&nbsp;2022 <a href="/">杨星博客</a>
+        </p>
+    
+    
+<!--    <p>Powered by <a href="https://f000.top" target="_blank">BuildNew</a>-->
+    <p>滇ICP备2021005610号</p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+    
+ 
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        let lazyloadT = Boolean('false'),
+            auto_fancybox = Boolean('false')
+        if (auto_fancybox) {
+            $(".post__content").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        } else {
+            $(".post__content").find("fancybox").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        }
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    <script>
+        function loadComment() {
+            let e;
+            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/twikoo@0.3.2/dist/twikoo.all.min.js',
+            document.body.appendChild(e);
+            e.onload = () => {
+                twikoo.init({
+                    envId: 'twikoo-0gv0i4p12778a6e6',
+                    el: '#tcomment'
+                });
+            };
+        }
+    
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+    
+        setTimeout(function () {
+            if (!isBot && supportsIntersectionObserver) {
+                var comment_observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        loadComment();
+                        comment_observer.disconnect();
+                    }
+                }, { threshold: [0] });
+                comment_observer.observe(document.getElementById('comment'));
+            } else {
+                loadComment();
+            }
+        }, 1);
+    </script>
+
+
+
+
+    </body>
+</html>

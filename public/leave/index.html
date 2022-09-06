@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+    <meta charset="utf-8">
+
+    
+
+    <!-- 渲染优化 -->
+    <meta name="renderer" content="webkit">
+    <meta name="force-rendering" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="HandheldFriendly" content="True" >
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!--icon-->
+
+    
+        <link rel="shortcut icon" href="/images/favicon.ico">
+    
+    
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    
+    
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    
+    
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    
+    
+        <link rel="mask-icon" href="/images/safari-pinned-tab.svg">
+    
+
+
+    <!-- meta -->
+
+
+<title>我搬家啦! | 杨星博客</title>
+
+
+    <meta name="keywords" content="博客,blog,java,计算机">
+
+
+
+
+    <!-- OpenGraph -->
+ 
+    <meta name="description" content="hexo给我留下了很多美好的回忆,我在这里书写文字已经有323天啦! 这快一年的时间,我进步了很多,翻看以前的文章满满都是回忆. 它好像不能被搜素引擎所找到,更像是我的一个笔记库  但是由于hexo是静态的网页,每次写文章都很麻烦 随意我决定停止用hexo继续写文章  我的新博客将放在博客园:  网址是: www.cnblogs.com&#x2F;yangstar 这个一个动态的博客,无论是在手机上还是电脑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我搬家啦!">
+<meta property="og:url" content="https://yangstar23.github.io/leave/index.html">
+<meta property="og:site_name" content="杨星博客">
+<meta property="og:description" content="hexo给我留下了很多美好的回忆,我在这里书写文字已经有323天啦! 这快一年的时间,我进步了很多,翻看以前的文章满满都是回忆. 它好像不能被搜素引擎所找到,更像是我的一个笔记库  但是由于hexo是静态的网页,每次写文章都很麻烦 随意我决定停止用hexo继续写文章  我的新博客将放在博客园:  网址是: www.cnblogs.com&#x2F;yangstar 这个一个动态的博客,无论是在手机上还是电脑">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://yangstar23.github.io/leave/image-20220701211854707.png">
+<meta property="og:image" content="https://yangstar23.github.io/leave/3D12640C7464D5209C879D174BF7CC8C.png">
+<meta property="article:published_time" content="2022-07-01T13:13:18.000Z">
+<meta property="article:modified_time" content="2022-07-01T13:42:40.000Z">
+<meta property="article:author" content="yagnstar">
+<meta property="article:tag" content="博客,blog,java,计算机">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://yangstar23.github.io/leave/image-20220701211854707.png">
+
+
+    
+<link rel="stylesheet" href="/css/style/main.css">
+ 
+
+    
+    
+        <link rel="stylesheet" id="hl-default-theme" href="/css/highlight/default.css" media="none" onload="this.media='all'">
+        
+    
+
+    
+    
+
+    
+
+     
+    <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+ 
+
+    <!-- custom head -->
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+    <body>
+        <div id="app">
+            <header class="header">
+    <div class="header__left">
+        <a href="/" class="button">
+            <span class="logo__text">Ystar</span>
+        </a>
+    </div>
+    <div class="header__right">
+        
+            <div class="navbar__menus">
+                
+                    <a href="/" class="navbar-menu button">首页</a>
+                
+                    <a href="/tags/" class="navbar-menu button">标签</a>
+                
+                    <a href="/archives/" class="navbar-menu button">全部文章</a>
+                
+                    <a href="/friends/" class="navbar-menu button">友链</a>
+                
+                    <a href="/artitalk/" class="navbar-menu button">说说</a>
+                
+                    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="navbar-menu button">读书笔记</a>
+                
+            </div>
+        
+        
+        
+
+        
+        
+
+        
+            <a class="dropdown-icon button" id="btn-dropdown" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width='24' height='24' fill="none" stroke="currentColor" stroke-width="0.7" stroke-linecap="round" stroke-linejoin="round"><path fill="currentColor" d="M3.314,4.8h13.372c0.41,0,0.743-0.333,0.743-0.743c0-0.41-0.333-0.743-0.743-0.743H3.314c-0.41,0-0.743,0.333-0.743,0.743C2.571,4.467,2.904,4.8,3.314,4.8z M16.686,15.2H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,15.2,16.686,15.2z M16.686,9.257H3.314c-0.41,0-0.743,0.333-0.743,0.743s0.333,0.743,0.743,0.743h13.372c0.41,0,0.743-0.333,0.743-0.743S17.096,9.257,16.686,9.257z"></path></svg></a>
+            <div class="dropdown-menus" id="dropdown-menus">
+                
+                    <a href="/" class="dropdown-menu button">首页</a>
+                
+                    <a href="/tags/" class="dropdown-menu button">标签</a>
+                
+                    <a href="/archives/" class="dropdown-menu button">全部文章</a>
+                
+                    <a href="/friends/" class="dropdown-menu button">友链</a>
+                
+                    <a href="/artitalk/" class="dropdown-menu button">说说</a>
+                
+                    <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="dropdown-menu button">读书笔记</a>
+                
+            </div>
+        
+    </div>
+</header>
+
+
+            <main class="main">
+    
+
+<div class="post-title">
+    <h1 class="post-title__text">
+        我搬家啦!
+    </h1>
+    <div class="post-title__meta">
+        <a href="/archives/2022/07/" class="post-meta__date button">2022-07-01</a>
+        
+ 
+        
+    
+    
+
+
+ 
+
+ 
+    </div>
+</div>
+
+
+
+<article class="post content-card">
+    <div class="post__header">
+    <div class="post__expire" id="post-expired-notify">
+        <p>
+            本文最后更新于 &lt;span id=&#34;expire-date&#34;&gt;&lt;/span&gt; 天前，文中部分描述可能已经过时。
+        </p>
+    </div>
+    <script>
+        (() => {
+            var update = Date.parse("2022-07-01"),
+                date = new Date(),
+                now = date.getTime(),
+                expire = now - update,
+                expire_days = Math.floor(expire/(24*3600*1000));
+            if (expire_days >= 50) {
+                document.querySelectorAll('#expire-date')[0].innerHTML = expire_days;
+                document.querySelectorAll('#post-expired-notify')[0].style.display = 'block';
+            }
+        })();
+    </script>
+</div>
+    <div class="post__content">
+        <p>hexo给我留下了很多美好的回忆,我在这里书写文字已经有323天啦!</p>
+<p>这快一年的时间,我进步了很多,翻看以前的文章满满都是回忆.</p>
+<p>它好像不能被搜素引擎所找到,更像是我的一个笔记库</p>
+<hr>
+<p>但是由于hexo是静态的网页,每次写文章都很麻烦</p>
+<p>随意我决定停止用hexo继续写文章</p>
+<hr>
+<p>我的新博客将放在博客园:</p>
+<p><img src="/leave/image-20220701211854707.png" alt="image-20220701211854707"></p>
+<p>网址是: <a target="_blank" rel="noopener" href="http://www.cnblogs.com/yangstar">www.cnblogs.com/yangstar</a></p>
+<p>这个一个动态的博客,无论是在手机上还是电脑上,随时随地都可以更新,给了我更多写作的乐趣,而不是把精力放在博客的配置上</p>
+<hr>
+<p>不知道以后我还会不会再这个网页上更新的</p>
+<p>一是因为我的域名<a target="_blank" rel="noopener" href="http://www.f000.top快到期了/">www.f000.top快到期了</a></p>
+<p>我决定不在给他续费,我想买一个新的域名,暂时决定是这个<a target="_blank" rel="noopener" href="http://www.yangstar.top(.cn的域名被人买了)/">www.yangstar.top(.cn的域名被人买了)</a></p>
+<p>我会把域名解析到我博客园的首页</p>
+<p>二是我更换电脑了,不知道以后能不能愉快的把hexo搬过去,如果不能,这可能是我最后一次更新了</p>
+<hr>
+<p>我爱这个网站,虽然不是我自己写的主题,但是在它上面留下了我探索的脚步,是我一次一次的摸索才搞出来的,让我再次爱上了computer,之中遇到了很多bug,但</p>
+<p>是最后都能解决,真的很不容易,对我这么一个动手能力一般的人来说,哈哈哈哈</p>
+<hr>
+<p>最后一下你可以通过更多方式联系到我:</p>
+<p>bilibili:<a target="_blank" rel="noopener" href="https://space.bilibili.com/447570181">https://space.bilibili.com/447570181</a></p>
+<p>wechat:goodmaele</p>
+<p>email:<a href="mailto:&#103;&#x6f;&#x6f;&#100;&#109;&#97;&#x6c;&#101;&#64;&#113;&#x71;&#x2e;&#99;&#x6f;&#x6d;">&#103;&#x6f;&#x6f;&#100;&#109;&#97;&#x6c;&#101;&#64;&#113;&#x71;&#x2e;&#99;&#x6f;&#x6d;</a></p>
+<hr>
+<p>最后感叹一下时间过得真快,323多天一瞬而过,要不是有这个博客,写下了一些文章,可能更多经历的瞬间都已经遗忘</p>
+<p>这是书写的意义,继续前进的同时,也未曾忘记曾经.</p>
+<p>愿只如初见:</p>
+<img src="/leave/3D12640C7464D5209C879D174BF7CC8C.png" alt="img" style="zoom: 25%;">
+
+
+
+
+
+
+
+
+
+
+    </div>
+     
+    <div class="post-footer__meta"><p>更新于 2022-07-01</p></div> 
+    <div class="post-entry__tags"></div> 
+</article>
+
+
+    <div class="nav">
+        <div class="nav__prev">
+            
+                <a href="/hello-world/" class="nav__link">
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M589.088 790.624L310.464 512l278.624-278.624 45.248 45.248L400.96 512l233.376 233.376z" fill="#808080"></path></svg>
+                    </div>
+                    <div>
+                        <div class="nav__label">
+                            Previous Post
+                        </div>
+                        <div class="nav__title">
+                            Hello World
+                        </div>
+                    </div>
+                </a>
+            
+        </div>
+        <div class="nav__next">
+            
+                <a href="/mining/" class="nav__link">
+                    <div>
+                        <div class="nav__label">
+                            Next Post
+                        </div>
+                        <div class="nav__title">
+                            mining
+                        </div>
+                    </div>
+                    <div>
+                        <svg viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M434.944 790.624l-45.248-45.248L623.04 512l-233.376-233.376 45.248-45.248L713.568 512z" fill="#808080"></path></svg>
+                    </div>
+                </a>
+            
+        </div>
+    </div>
+
+
+
+    <div class="post__comments content-card" id="comment">
+        
+    <h4>评论</h4>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div id="tcomment" class="twikoo_thread"></div>
+
+
+
+    </div>
+
+
+
+</main>
+
+            <footer class="footer">
+     
+    <a href="#" class="button" id="b2t" aria-label="回到顶部" title="回到顶部">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="32" height="32">
+            <path d="M233.376 722.752L278.624 768 512 534.624 745.376 768l45.248-45.248L512 444.128zM192 352h640V288H192z" fill="currentColor"></path>
+        </svg>
+    </a>
+
+    
+
+
+    
+    
+    
+        <span id="busuanzi_container_site_uv" hidden>
+            <span></span>
+            <span id="busuanzi_value_site_uv"></span>
+            <span>Viewers</span>
+            
+                <span>|</span>
+            
+        </span>
+    
+    
+        <span id="busuanzi_container_site_pv" hidden>
+            <span></span>
+            <span id="busuanzi_value_site_pv"></span>
+            <span>Views</span>
+            
+        </span>
+    
+ 
+ 
+
+ 
+    
+        
+        <p class="footer-copyright">
+            Copyright © 2021&nbsp;-&nbsp;2022 <a href="/">杨星博客</a>
+        </p>
+    
+    
+<!--    <p>Powered by <a href="https://f000.top" target="_blank">BuildNew</a>-->
+    <p>滇ICP备2021005610号</p>
+</footer>
+
+        </div>
+         
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+    
+ 
+
+
+    
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.css">
+
+    
+<script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.4.1/dist/jquery.fancybox.min.js"></script>
+
+    <script>
+        let lazyloadT = Boolean('false'),
+            auto_fancybox = Boolean('false')
+        if (auto_fancybox) {
+            $(".post__content").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        } else {
+            $(".post__content").find("fancybox").find('img').each(function () {
+                var element = document.createElement("a");
+                $(element).attr("data-fancybox", "gallery");
+                $(element).attr("href", $(this).attr("src"));
+                if (lazyloadT) {
+                    $(element).attr("href", $(this).attr("data-srcset"));
+                }
+                $(this).wrap(element);
+            });
+        }
+    </script>
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+    
+
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+    
+    <script>
+        function loadComment() {
+            let e;
+            (e = document.createElement("script")).src = 'https://cdn.jsdelivr.net/npm/twikoo@0.3.2/dist/twikoo.all.min.js',
+            document.body.appendChild(e);
+            e.onload = () => {
+                twikoo.init({
+                    envId: 'twikoo-0gv0i4p12778a6e6',
+                    el: '#tcomment'
+                });
+            };
+        }
+    
+        var runningOnBrowser = typeof window !== "undefined";
+        var isBot = runningOnBrowser && !("onscroll" in window) || typeof navigator !== "undefined" && /(gle|ing|ro|msn)bot|crawl|spider|yand|duckgo/i.test(navigator.userAgent);
+        var supportsIntersectionObserver = runningOnBrowser && "IntersectionObserver" in window;
+    
+        setTimeout(function () {
+            if (!isBot && supportsIntersectionObserver) {
+                var comment_observer = new IntersectionObserver(function(entries) {
+                    if (entries[0].isIntersecting) {
+                        loadComment();
+                        comment_observer.disconnect();
+                    }
+                }, { threshold: [0] });
+                comment_observer.observe(document.getElementById('comment'));
+            } else {
+                loadComment();
+            }
+        }, 1);
+    </script>
+
+
+
+
+    </body>
+</html>
